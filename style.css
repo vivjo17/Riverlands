@@ -18,7 +18,7 @@ body {
 }
 
 .header {
-  background-color: #000;
+  background-color: white;
   color: var(--text-light);
   display: flex;
   justify-content: space-between;
@@ -34,6 +34,8 @@ body {
 .logo img {
   height: 150px;
   width: 175px;
+  transform: scale(1.2);
+  transform-origin: left center;
 }
 
 .nav ul {
@@ -45,7 +47,7 @@ body {
 }
 
 .nav a {
-  color: var(--text-light);
+  color: black;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -55,7 +57,7 @@ body {
   color: var(--accent-color);
 }
 
-.hero {
+.welcome {
   height: 80vh;
   display: flex;
   align-items: center;
@@ -66,13 +68,13 @@ body {
   color: var(--text-light);
 }
 
-.hero-content h1 {
+.welcome-content h1 {
   font-size: 3rem;
   margin-bottom: 10px;
   font-weight: 600;
 }
 
-.hero-content p {
+.welcome-content p {
   font-size: 1.2rem;
   margin-bottom: 20px;
   max-width: 600px;
@@ -146,7 +148,7 @@ body {
 }
 
 .footer {
-  background-color: #000;
+  background: linear-gradient(180deg, #0f574e 0%, #083a42 100%);
   color: #888888;
   text-align: center;
   padding: 40px;
