@@ -155,6 +155,39 @@ body {
   font-size: 0.9rem;
 }
 
+.contact-section {
+  padding: 120px 20px 40px;
+  background-color: #f7f9f9;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+#status {
+  margin-top: 10px;
+}
+
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2.2rem;
