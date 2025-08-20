@@ -1,0 +1,24 @@
+{
+  "name": "riverlands",
+  "version": "1.0.0",
+  "description": "This is a website for a new neighborhood in Texas",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivjo17/Riverlands.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivjo17/Riverlands/issues"
+  },
+  "homepage": "https://github.com/vivjo17/Riverlands#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
