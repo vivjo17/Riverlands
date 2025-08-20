@@ -23,5 +23,5 @@ PORT=3000 # optional
 Install dependencies and start the server:
 
 ```
-node server.js
+node index.js
 ```

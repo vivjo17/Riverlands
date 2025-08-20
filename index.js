@@ -1,9 +1,15 @@
 import express from "express";
 import nodemailer from "nodemailer";
+import path from "path";
 import "dotenv/config";
 
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(process.cwd(), "static")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "static", "index.html"));
+});
 
 app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
