@@ -8,6 +8,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(process.cwd(), "static")));
+app.use("/assets", express.static(path.join(process.cwd(), "assets")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(process.cwd(), "static", "index.html"));
