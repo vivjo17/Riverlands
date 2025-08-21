@@ -1,0 +1,20 @@
+
+  rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    match /mail/{id} {
+      allow create: if
+        request.resource.data.to == "vivianpupo@pupoinvestments.com" &&
+        request.resource.data.message is map &&
+        request.resource.data.message.subject is string &&
+        request.resource.data.message.text is string &&
+        request.resource.data.message.html is string &&
+        request.resource.data.message.subject.size() <= 200 &&
+        request.resource.data.message.text.size() <= 5000 &&
+        request.resource.data.message.html.size() <= 10000;
+      allow read, update, delete: if false;
+    }
+  }
+}
+
+    

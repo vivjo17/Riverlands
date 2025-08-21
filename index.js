@@ -1,38 +1,34 @@
-import express from "express";
+import functions from "firebase-functions";
 import nodemailer from "nodemailer";
-import path from "path";
-import dotenv from "dotenv";
 
-dotenv.config();
+export const contact = functions.https.onRequest(async (req, res) => {
+  if (req.method !== "POST") {
+    res.status(405).send("Method Not Allowed");
+    return;
+  }
 
-const app = express();
-app.use(express.json());
-app.use(express.static(path.join(process.cwd(), "static")));
-app.use("/assets", express.static(path.join(process.cwd(), "assets")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "static", "index.html"));
-});
-
-app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "All fields are required." });
+    res.status(400).json({ error: "All fields are required." });
+    return;
   }
+
   try {
+    const { smtp } = functions.config();
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === "true",
+      host: smtp.host,
+      port: Number(smtp.port),
+      secure: smtp.secure === "true" || smtp.secure === true,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: smtp.user,
+        pass: smtp.pass,
       },
     });
 
     await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: process.env.SMTP_TO,
+      from: smtp.user,
+      to: smtp.to,
       subject: `Contact form submission from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
     });
@@ -43,10 +39,3 @@ app.post("/contact", async (req, res) => {
     res.status(500).json({ error: "Failed to send message." });
   }
 });
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-export default app;

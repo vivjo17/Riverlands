@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const formData = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
@@ -23,12 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
       } else {
         const data = await res.json();
-        status.textContent = data.error || "An error occurred.";
+        status.textContent =
+          data.error || "Something went wrong. Please try again.";
         status.style.color = "red";
       }
     } catch (err) {
-      status.textContent = "Network error.";
+      status.textContent = "Network error. Please try again later.";
       status.style.color = "red";
+      console.error(err);
     }
   });
 });

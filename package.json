@@ -2,10 +2,8 @@
   "name": "riverlands",
   "version": "1.0.0",
   "description": "This is a website for a new neighborhood in Texas",
-  "main": "index.js",
-  "type": "module",
+  "private": "true",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,11 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.6.1",
-    "express": "^4.18.2",
-    "nodemailer": "^6.10.1"
-  },
   "bugs": {
     "url": "https://github.com/vivjo17/Riverlands/issues"
   },
