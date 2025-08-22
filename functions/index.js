@@ -13,13 +13,20 @@ export const contact = functions.https.onRequest(async (req, res) => {
     return;
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    res.status(400).json({ error: "Invalid email format." });
+    s;
+    return;
+  }
+
   try {
     const { smtp } = functions.config();
 
     const transporter = nodemailer.createTransport({
       host: smtp.host,
       port: Number(smtp.port),
-      secure: smtp.secure === "true" || smtp.secure === true,
+      secure: smtp.secure === "true",
       auth: {
         user: smtp.user,
         pass: smtp.pass,
