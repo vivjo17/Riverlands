@@ -1,6 +1,10 @@
 # Riverlands
 
-This is a website for a new neighborhood in Texas
+This is a website for a new neighborhood in Texas.
+
+All static site files live under the `static/` directory. The `assets`
+and `images` folders have been moved inside `static/` so Firebase Hosting
+can deploy them along with the HTML files.
 
 ## Contact Form
 
